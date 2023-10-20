@@ -2,7 +2,6 @@
   "name": "crwn-clothing",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "yarn@3.6.4",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -34,6 +33,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.22.15",
     "eslint": "latest",
     "eslint-plugin-react": "latest"
   }

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
@@ -23,8 +22,7 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     try {
-      const response = await signInWithGooglePopup();
-      await createUserDocumentFromAuth(response);
+      await signInWithGooglePopup();
     } catch (error) {
       console.error(error);
     }
@@ -34,10 +32,7 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
+      await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -61,6 +56,7 @@ const SignInForm = () => {
   return (
     <div className="sign-in-container">
       <h2>Already have an account?</h2>
+      <span>Sign in with your email and password</span>
       <form>
         <FormInput
           label="Email"

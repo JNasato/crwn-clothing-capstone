@@ -1,6 +1,15 @@
 .authentication-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 900px;
   margin: 30px auto;
+}
+
+.toggle-auth-type-button {
+  margin-top: 30px;
+  border: none;
+  background-color: transparent;
+  font-family: "Fira Sans Condensed";
+  text-decoration: underline;
+  cursor: pointer;
 }

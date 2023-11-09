@@ -2,8 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const CATEGORIES_INITIAL_STATE = {
   categories: [],
-  isLoading: false,
-  error: null,
 };
 
 export const categoriesSlice = createSlice({

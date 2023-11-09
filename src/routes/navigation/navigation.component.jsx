@@ -5,7 +5,7 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "../../store/user/user.selector";
 
 import {
@@ -15,10 +15,17 @@ import {
   NavigationContainer,
 } from "./navigation.styles";
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
+import { clearCartItems } from "../../store/cart/cart.reducer";
 
 const Navigation = () => {
+  const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const isCartOpen = useSelector(selectIsCartOpen);
+
+  const signOutHandler = () => {
+    dispatch(clearCartItems());
+    signOutUser();
+  };
 
   return (
     <>
@@ -29,7 +36,7 @@ const Navigation = () => {
         <NavLinks>
           <NavLink to="/shop">SHOP</NavLink>
           {currentUser ? (
-            <NavLink as="span" onClick={signOutUser}>
+            <NavLink as="span" onClick={signOutHandler}>
               SIGN OUT
             </NavLink>
           ) : (

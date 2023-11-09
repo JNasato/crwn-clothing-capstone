@@ -18,7 +18,7 @@ const Category = () => {
   return (
     <>
       <CategoryTitle> {category.toUpperCase()}</CategoryTitle>
-      {!products.length ? (
+      {!products?.length ? (
         <Spinner />
       ) : (
         <CategoryContainer>

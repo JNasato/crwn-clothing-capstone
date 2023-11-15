@@ -9,8 +9,13 @@ import {
   ImageContainer,
   RemoveButton,
 } from "./checkout-item.styles";
+import { CartItem } from "../../store/cart/cart.types";
 
-const CheckoutItem = ({ cartItem }) => {
+interface IProps {
+  cartItem: CartItem;
+}
+
+const CheckoutItem = ({ cartItem }: IProps) => {
   const { name, imageUrl, price, quantity } = cartItem;
   const dispatch = useDispatch();
 

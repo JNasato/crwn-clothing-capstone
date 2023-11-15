@@ -2,8 +2,13 @@ import { useDispatch } from "react-redux";
 import { addItemToCart } from "../../store/cart/cart.reducer";
 import Button, { BUTTON_TYPES } from "../button/button.component";
 import { Footer, ProductCardContainer } from "./product-card.styles";
+import { CategoryItem } from "../../store/categories/categories.types";
 
-const ProductCard = ({ product }) => {
+interface IProps {
+  product: CategoryItem;
+}
+
+const ProductCard = ({ product }: IProps) => {
   const { name, price, imageUrl } = product;
 
   const dispatch = useDispatch();

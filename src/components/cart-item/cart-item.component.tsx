@@ -1,6 +1,11 @@
+import { CartItem } from "../../store/cart/cart.types";
 import { CartItemContainer, ItemDetails } from "./cart-item.styles";
 
-const CartItem = ({ cartItem }) => {
+interface IProps {
+  cartItem: CartItem;
+}
+
+const CartItem = ({ cartItem }: IProps) => {
   const { name, imageUrl, price, quantity } = cartItem;
 
   return (

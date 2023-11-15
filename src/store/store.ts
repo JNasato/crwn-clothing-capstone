@@ -1,12 +1,18 @@
-import { configureStore } from "@reduxjs/toolkit";
-import logger from "redux-logger";
-import { persistStore, persistReducer } from "redux-persist";
+import { Middleware, configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer, PersistConfig } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import logger from "redux-logger";
 // import thunk from "redux-thunk";
 
 import { rootReducer } from "./root-reducer";
 
-const persistConfig = {
+export type RootState = ReturnType<typeof rootReducer>;
+
+type ExtendedPersistConfig = PersistConfig<RootState> & {
+  blacklist: (keyof RootState)[];
+};
+
+const persistConfig: ExtendedPersistConfig = {
   key: "root",
   storage,
   blacklist: ["user"],
@@ -16,7 +22,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // eslint-disable-next-line no-undef
 const middleWares = [process.env.NODE_ENV !== "production" && logger].filter(
-  Boolean
+  (middleware): middleware is Middleware => Boolean(middleware)
 );
 // const composedEnhancers = compose(applyMiddleware(...middleWares));
 

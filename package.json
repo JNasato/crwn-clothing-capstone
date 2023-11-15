@@ -9,6 +9,12 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^29.5.8",
+    "@types/node": "^20.9.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@types/redux-logger": "^3.0.12",
+    "@types/styled-components": "^5.1.30",
     "dot-env": "^0.0.1",
     "firebase": "^10.5.0",
     "react": "^18.2.0",
@@ -25,6 +31,7 @@
     "sass": "^1.69.4",
     "stripe": "^14.3.0",
     "styled-components": "^6.1.0",
+    "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

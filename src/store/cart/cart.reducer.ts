@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { CartItem } from "./cart.types";
+import { CategoryItem } from "../categories/categories.types";
 
-const addCartItem = (cartItems, productToAdd) => {
+const addCartItem = (cartItems: CartItem[], productToAdd: CategoryItem) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
   );
@@ -16,12 +18,12 @@ const addCartItem = (cartItems, productToAdd) => {
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
-const removeCartItem = (cartItems, cartItemToRemove) => {
+const removeCartItem = (cartItems: CartItem[], cartItemToRemove: CartItem) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === cartItemToRemove.id
   );
 
-  if (existingCartItem.quantity === 1) {
+  if (existingCartItem && existingCartItem.quantity === 1) {
     return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
   }
 
@@ -32,11 +34,16 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
   );
 };
 
-const clearCartItem = (cartItems, cartItemToClear) => {
+const clearCartItem = (cartItems: CartItem[], cartItemToClear: CartItem) => {
   return cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
 };
 
-const CART_INITIAL_STATE = {
+export type CartState = {
+  readonly isCartOpen: boolean;
+  readonly cartItems: CartItem[];
+};
+
+const CART_INITIAL_STATE: CartState = {
   isCartOpen: false,
   cartItems: [],
 };

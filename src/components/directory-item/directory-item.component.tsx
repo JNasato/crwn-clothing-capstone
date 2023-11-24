@@ -5,10 +5,10 @@ import {
   Body,
   DirectoryItemContainer,
 } from "./directory-item.styles";
-import { Category } from "../../store/categories/categories.types";
+import { DirectoryCategory } from "../directory/directory.component";
 
 interface IProps {
-  category: Category & { route: string };
+  category: DirectoryCategory;
 }
 
 const DirectoryItem = ({ category }: IProps) => {
@@ -20,7 +20,7 @@ const DirectoryItem = ({ category }: IProps) => {
 
   return (
     <DirectoryItemContainer onClick={onNavigateHandler}>
-      <BackgroundImage $imageUrL={imageUrl} />
+      <BackgroundImage imageUrl={imageUrl} />
       <Body>
         <h2>{title}</h2>
         <p>Shop Now</p>

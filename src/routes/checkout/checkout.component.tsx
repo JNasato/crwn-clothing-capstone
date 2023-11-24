@@ -12,8 +12,9 @@ import {
   selectCartTotal,
 } from "../../store/cart/cart.selector";
 import PaymentForm from "../../components/payment-form/payment-form.component";
+import { memo } from "react";
 
-const Checkout = () => {
+const Checkout = memo(function func() {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
 
@@ -46,6 +47,6 @@ const Checkout = () => {
       <PaymentForm />
     </CheckoutContainer>
   );
-};
+});
 
 export default Checkout;

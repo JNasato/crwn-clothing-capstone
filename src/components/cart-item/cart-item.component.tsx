@@ -1,11 +1,12 @@
-import { CartItem } from "../../store/cart/cart.types";
+import { memo } from "react";
+import { CartItemType } from "../../store/cart/cart.types";
 import { CartItemContainer, ItemDetails } from "./cart-item.styles";
 
 interface IProps {
-  cartItem: CartItem;
+  cartItem: CartItemType;
 }
 
-const CartItem = ({ cartItem }: IProps) => {
+const CartItem = memo(function func({ cartItem }: IProps) {
   const { name, imageUrl, price, quantity } = cartItem;
 
   return (
@@ -19,6 +20,6 @@ const CartItem = ({ cartItem }: IProps) => {
       </ItemDetails>
     </CartItemContainer>
   );
-};
+});
 
 export default CartItem;

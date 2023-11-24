@@ -9,10 +9,10 @@ import {
   ImageContainer,
   RemoveButton,
 } from "./checkout-item.styles";
-import { CartItem } from "../../store/cart/cart.types";
+import { CartItemType } from "../../store/cart/cart.types";
 
 interface IProps {
-  cartItem: CartItem;
+  cartItem: CartItemType;
 }
 
 const CheckoutItem = ({ cartItem }: IProps) => {

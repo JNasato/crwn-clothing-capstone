@@ -1,5 +1,5 @@
 import { CategoryItem } from "../categories/categories.types";
 
-export type CartItem = CategoryItem & {
+export type CartItemType = CategoryItem & {
   quantity: number;
 };

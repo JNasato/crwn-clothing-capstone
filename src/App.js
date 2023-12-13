@@ -19,6 +19,7 @@ import {
 } from "./utils/firebase/firebase.utils";
 import { setCurrentUser } from "./store/user/user.reducer";
 import Spinner from "./components/spinner/spinner.component";
+import { GlobalStyle } from "./global.styles";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const App = () => {
 
   return (
     <Suspense fallback={<Spinner />}>
+      <GlobalStyle />
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route index element={<Home />} />

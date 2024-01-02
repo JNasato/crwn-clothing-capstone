@@ -20,6 +20,7 @@ import {
 import { setCurrentUser } from "./store/user/user.reducer";
 import Spinner from "./components/spinner/spinner.component";
 import { GlobalStyle } from "./global.styles";
+import OrderHistory from "./routes/order-history/order-history.component";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/" element={<Navigation />}>
           <Route index element={<Home />} />
           <Route path="/shop/*" element={<Shop />} />
+          <Route path="/orders" element={<OrderHistory />} />
           <Route path="/auth" element={<SignIn />} />
           <Route path="/checkout" element={<Checkout />} />
         </Route>

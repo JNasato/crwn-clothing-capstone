@@ -7,15 +7,25 @@ import {
   PaymentFormContainer,
 } from "./payment-form.styles";
 
-import { useSelector } from "react-redux";
-import { selectCartTotal } from "../../store/cart/cart.selector";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../store/cart/cart.selector";
 import { selectCurrentUser } from "../../store/user/user.selector";
+import { updateOrderHistory } from "../../utils/firebase/firebase.utils";
+import { clearCartItems } from "../../store/cart/cart.reducer";
+import { useNavigate } from "react-router-dom";
 
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const amount = useSelector(selectCartTotal);
+  const cartItems = useSelector(selectCartItems);
   const currentUser = useSelector(selectCurrentUser);
 
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
@@ -57,7 +67,10 @@ const PaymentForm = () => {
       alert(paymentResult.error.message);
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
-        alert("Payment Successful!");
+        updateOrderHistory(currentUser, cartItems, amount);
+        alert("Payment successful!");
+        dispatch(clearCartItems());
+        navigate("/orders");
       }
     }
   };

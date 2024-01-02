@@ -18,14 +18,15 @@ export const CheckoutHeader = styled.div`
 `;
 
 export const HeaderBlock = styled.div`
-    .header-block {
-      text-transform: capitalize;
-      width: 23%;
+  .header-block {
+    text-transform: capitalize;
+    width: 23%;
 
-      &:last-child {
-        width: 8%;
-      }
-    `;
+    &:last-child {
+      width: 8%;
+    }
+  }
+`;
 
 export const Total = styled.span`
   margin-top: 30px;

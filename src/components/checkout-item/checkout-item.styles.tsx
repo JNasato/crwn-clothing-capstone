@@ -14,18 +14,19 @@ export const CheckoutItemContainer = styled.div`
   .price {
     width: 23%;
   }
-  
+
   .quantity {
     display: flex;
-    
+
     .arrow {
       cursor: pointer;
     }
-    
+
     .value {
       margin: 0 10px;
     }
-    `;
+  }
+`;
 
 export const ImageContainer = styled.div`
   width: 23%;

@@ -23,6 +23,7 @@ import {
   QueryDocumentSnapshot,
 } from "firebase/firestore";
 import { Category } from "../../store/categories/categories.types";
+import { CartItemType } from "../../store/cart/cart.types";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -150,5 +151,30 @@ export const getCurrentUser = (): Promise<User | null> => {
       },
       reject
     );
+  });
+};
+
+export const getOrderHistory = async (user: any) => {
+  const docRef = doc(db, "orders", user.uid);
+  const snapshot = await getDoc(docRef);
+  return snapshot.data()?.orders;
+};
+
+export const updateOrderHistory = async (
+  user: any,
+  items: CartItemType[],
+  total: number
+) => {
+  const docRef = doc(db, "orders", user.uid);
+  const historicalOrders = await getOrderHistory(user);
+
+  const newOrder = {
+    createdAt: new Date(),
+    items,
+    total,
+  };
+
+  await setDoc(docRef, {
+    orders: [newOrder, ...historicalOrders],
   });
 };
